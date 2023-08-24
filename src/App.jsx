@@ -7,7 +7,7 @@ import NavBar from './components/Nav/NavBar';
 import './App.css';
 
 function App() {
-  const [user,setUser]=useState({})
+  const [user,setUser]=useState(null)
  
   return (
     <main className="App">
@@ -15,6 +15,7 @@ function App() {
        user?
        <>
           <NavBar/>
+         
           <Routes>
             <Route path='/orders/new' element={<NewOrderPage/>}/>
             <Route path='/orders' element={<OrderHistoryPage/>}/>
