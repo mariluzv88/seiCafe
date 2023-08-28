@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getUser } from './utilities/users-service';
 import {Route, Routes} from 'react-router-dom'
 import AuthPage from './pages/Auth/AuthPage';
 import NewOrderPage from './pages/NewOrder/NewOrderPage';
@@ -7,14 +8,14 @@ import NavBar from './components/Nav/NavBar';
 import './App.css';
 
 function App() {
-  const [user,setUser]=useState(null)
+  const [user,setUser]=useState(getUser())
  
   return (
     <main className="App">
      {
        user?
        <>
-          <NavBar/>
+          <NavBar user={user} setUser={setUser}/>
          
           <Routes>
             <Route path='/orders/new' element={<NewOrderPage/>}/>
@@ -22,7 +23,7 @@ function App() {
           </Routes>
        </>
        :
-      <AuthPage/>
+      <AuthPage user={user}/>
      }
     </main>
   );
