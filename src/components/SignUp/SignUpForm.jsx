@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { signUp } from "../../utilities/users-service";
 
-export default function SignUpForm() {
+export default function SignUpForm({setUser}) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,7 +34,7 @@ export default function SignUpForm() {
       // const {name, email, password} = formData
 
       const user = await signUp(newFormData)
-      console.log(user)
+      setUser(user)
     } catch(err) {
       // An error occurred
       setFormData({...formData, error: 'Sign Up Failed - Try Again'})

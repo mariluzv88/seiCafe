@@ -23,7 +23,7 @@ function App() {
           </Routes>
        </>
        :
-      <AuthPage user={user}/>
+      <AuthPage setUser={setUser}/>
      }
     </main>
   );

@@ -11,7 +11,7 @@ export async function signUp(userData){
     localStorage.setItem('token',token)
     // console.log('2')
     // Baby step by returning whatever is sent back by the server
-    return token
+    return getUser()
 }
 export function getToken() {
     // getItem returns null if there's no string
@@ -35,3 +35,14 @@ export function getToken() {
     export function logOut() {
       localStorage.removeItem('token');
       }
+    export async function login(credentials){
+      const token = await usersAPI.login(credentials)
+      localStorage.setItem('token',token)
+      return getUser()
+    }
+    export async function checkToken(){
+      // checkToken returns a string, but let's
+     // make it a Date object for more flexibility
+      return usersAPI.checkToken().then
+      ((dateStr)=> new Date(dateStr))
+    }
